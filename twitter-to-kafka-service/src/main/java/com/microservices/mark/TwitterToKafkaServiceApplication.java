@@ -1,7 +1,7 @@
-package com.microservices.mark.twitter.to.kafka.service;
+package com.microservices.mark;
 
-import com.microservices.mark.twitter.to.kafka.service.config.TwitterToKafkaServiceConfigData;
-import com.microservices.mark.twitter.to.kafka.service.runner.StreamRunner;
+import com.microservices.mark.config.TwitterToKafkaServiceConfigData;
+import com.microservices.mark.runner.StreamRunner;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

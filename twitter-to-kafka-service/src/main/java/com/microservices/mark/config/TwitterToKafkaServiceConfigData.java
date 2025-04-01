@@ -1,4 +1,4 @@
-package com.microservices.mark.twitter.to.kafka.service.config;
+package com.microservices.mark.config;
 
 import lombok.Getter;
 import lombok.Setter;
