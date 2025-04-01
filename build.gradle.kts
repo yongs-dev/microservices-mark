@@ -4,18 +4,20 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7" apply false
 }
 
-group = "com.microservices.mark"
-version = "0.0.1-SNAPSHOT"
-
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
-repositories {
-    mavenCentral()
-    maven { url = uri("https://packages.confluent.io/maven/") }
+allprojects {
+    group = "com.microservices.mark"
+    version = "0.0.1-SNAPSHOT"
+
+    repositories {
+        mavenCentral()
+        maven { url = uri("https://packages.confluent.io/maven/") }
+    }
 }
 
 subprojects {
@@ -46,6 +48,12 @@ subprojects {
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    }
+
+    if (project.name != "app-config-data") {
+        dependencies {
+            implementation(project(":app-config-data"))
+        }
     }
 
     tasks.withType<Test> {
