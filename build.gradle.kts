@@ -15,6 +15,7 @@ allprojects {
     version = "0.0.1-SNAPSHOT"
 
     repositories {
+        gradlePluginPortal()
         mavenCentral()
         maven { url = uri("https://packages.confluent.io/maven/") }
     }
@@ -48,12 +49,6 @@ subprojects {
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    }
-
-    if (project.name != "app-config-data") {
-        dependencies {
-            implementation(project(":app-config-data"))
-        }
     }
 
     tasks.withType<Test> {
