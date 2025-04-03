@@ -1,6 +1,6 @@
 package com.microservices.mark.service.impl;
 
-import com.microservices.demo.kafka.avro.model.TwitterAvroModel;
+import com.microservices.mark.kafka.avro.model.TwitterAvroModel;
 import com.microservices.mark.service.KafkaProducer;
 import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;

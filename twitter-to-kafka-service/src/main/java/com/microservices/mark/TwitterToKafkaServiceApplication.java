@@ -1,6 +1,6 @@
 package com.microservices.mark;
 
-import com.microservices.mark.config.TwitterToKafkaServiceConfigData;
+import com.microservices.mark.init.StreamInitializer;
 import com.microservices.mark.runner.StreamRunner;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +14,8 @@ import twitter4j.TwitterException;
 @RequiredArgsConstructor
 public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
-    private final TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
     private final StreamRunner streamRunner;
+    private final StreamInitializer streamInitializer;
 
     public static void main(String[] args) {
         SpringApplication.run(TwitterToKafkaServiceApplication.class, args);
@@ -24,7 +24,10 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws TwitterException {
         log.info("TwitterToKafkaServiceApplication started");
-        log.info("{}", twitterToKafkaServiceConfigData.getTwitterKeywords());
+
+        streamInitializer.init();
         streamRunner.start();
+
+        log.info("TwitterToKafkaServiceApplication stopped");
     }
 }

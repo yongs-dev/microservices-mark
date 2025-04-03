@@ -35,15 +35,26 @@ public class KafkaAdminClient {
     private final WebClient webClient;
 
     public void createTopics() {
-        CreateTopicsResult createTopicsResult;
-
         try {
-            createTopicsResult = retryTemplate.execute(this::doCreateTopics);
+            retryTemplate.execute(this::doCreateTopics);
         } catch (Throwable t) {
             throw new KafkaClientException("Reached max number of retry for creating kafka topic(s)!", t);
         }
 
         checkTopicsCreated();
+    }
+
+    public void checkSchemaRegistry() {
+        Integer maxRetry = retryConfigData.getMaxAttempts();
+        int multiplier = retryConfigData.getMultiplier().intValue();
+        long sleepTimeMs = retryConfigData.getSleepTimeMs();
+
+        int retryCount = 1;
+        while (!getSchemaRegistryStatus().is2xxSuccessful()) {
+            checkMaxRetry(retryCount++, maxRetry);
+            sleep(sleepTimeMs);
+            sleepTimeMs += multiplier;
+        }
     }
 
     private CreateTopicsResult doCreateTopics(RetryContext retryContext) {
@@ -73,19 +84,6 @@ public class KafkaAdminClient {
                 sleepTimeMs += multiplier;
                 topics = getTopics();
             }
-        }
-    }
-
-    private void checkSchemaRegistry() {
-        Integer maxRetry = retryConfigData.getMaxAttempts();
-        int multiplier = retryConfigData.getMultiplier().intValue();
-        long sleepTimeMs = retryConfigData.getSleepTimeMs();
-
-        int retryCount = 1;
-        while (getSchemaRegistryStatus().is2xxSuccessful()) {
-            checkMaxRetry(retryCount++, maxRetry);
-            sleep(sleepTimeMs);
-            sleepTimeMs += multiplier;
         }
     }
 
