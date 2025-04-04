@@ -18,7 +18,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import reactor.util.retry.Retry;
 
+import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -98,6 +100,7 @@ public class KafkaAdminClient {
                         return Mono.just(HttpStatus.SERVICE_UNAVAILABLE);
                     }
                 })
+                .retryWhen(Retry.fixedDelay(10, Duration.ofSeconds(3)))
                 .block();
     }
 

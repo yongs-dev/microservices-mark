@@ -12,7 +12,7 @@ java {
 
 allprojects {
     group = "com.microservices.mark"
-    version = "0.0.1-SNAPSHOT"
+    version = "1.0.0"
 
     repositories {
         gradlePluginPortal()
@@ -24,9 +24,6 @@ allprojects {
 subprojects {
     apply(plugin = "java")
     apply(plugin = "io.spring.dependency-management")
-
-    group = "com.microservices.mark"
-    version = "0.0.1-SNAPSHOT"
 
     repositories {
         mavenCentral()
