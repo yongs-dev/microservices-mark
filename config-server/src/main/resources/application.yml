@@ -1,0 +1,25 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yongs-dev/microservices-mark-config-repository.git
+          default-label: main
+          username: yongs-dev
+          password: ENC(3W86ukkcepsQpneWZInq2cHm4WA37/TCLJzwzkQXXscj8JIs2kFMt/nuIIbXkCFve+fj5piLzyo3o6bZWevoc+/a9ZD2ntDyMW19T29C9BM=)
+          clone-on-start: true
+    fail-fast: true
+  security:
+    user:
+      name: mark
+      password: ENC(Ygugwl8r/ffdka57Le0tt82ZPwJRECjB8udyzNODQckyxqQJKeVy43ETKw9PBpYJ)
+
+logging:
+  level:
+    root: INFO
+    com.microservices.mark: INFO

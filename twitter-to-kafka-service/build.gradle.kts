@@ -10,6 +10,8 @@ dependencies {
     implementation(project(":kafka:kafka-model"))
     implementation(project(":kafka:kafka-producer"))
 
+    implementation("org.springframework.cloud:spring-cloud-starter-config")
+
     implementation("org.twitter4j:twitter4j-stream:4.0.7")
     implementation("com.fasterxml.jackson.core:jackson-databind")
     implementation("org.apache.httpcomponents:httpclient:4.5.14")

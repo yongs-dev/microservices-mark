@@ -1,3 +1,5 @@
+import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
+
 plugins {
     java
     id("org.springframework.boot") version "3.1.2" apply false
@@ -18,6 +20,7 @@ allprojects {
         gradlePluginPortal()
         mavenCentral()
         maven { url = uri("https://packages.confluent.io/maven/") }
+        maven { url = uri("https://repo.spring.io/release") }
     }
 }
 
@@ -25,9 +28,10 @@ subprojects {
     apply(plugin = "java")
     apply(plugin = "io.spring.dependency-management")
 
-    repositories {
-        mavenCentral()
-        maven { url = uri("https://packages.confluent.io/maven/") }
+    configure<DependencyManagementExtension> {
+        imports {
+            mavenBom("org.springframework.cloud:spring-cloud-dependencies:2022.0.4")
+        }
     }
 
     dependencies {

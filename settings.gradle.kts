@@ -1,10 +1,12 @@
 rootProject.name = "microservices-mark"
 
 include(
-    "common-config",
     "app-config-data",
-    "twitter-to-kafka-service",
+    "common-config",
+    "config-server",
     "kafka:kafka-model",
     "kafka:kafka-admin",
-    "kafka:kafka-producer"
+    "kafka:kafka-producer",
+    "playground",
+    "twitter-to-kafka-service"
 )
