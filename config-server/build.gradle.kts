@@ -1,4 +1,4 @@
-import org.springframework.boot.gradle.tasks.bundling.BootJar
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
     id("org.springframework.boot") version "3.1.2"
@@ -11,10 +11,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-aop")
 }
 
-tasks.getByName<BootJar>("bootJar") {
-    enabled = false
-}
-
-tasks.getByName<Jar>("jar") {
-    enabled = true
+tasks.named<BootBuildImage>("bootBuildImage") {
+    imageName.set("${project.group}/config.server:${project.version}")
+    builder.set("paketobuildpacks/builder-jammy-base:latest")
+    environment.set(mapOf("BP_JVM_VERSION" to "21.*"))
 }
