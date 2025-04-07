@@ -37,3 +37,4 @@ out/
 logs/
 
 /docker-compose/docker-logs/
+/playground/src/test/java/com/microservices/mark/encrypt/
