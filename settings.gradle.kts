@@ -8,6 +8,7 @@ include(
     "kafka:kafka-admin",
     "kafka:kafka-producer",
     "kafka:kafka-consumer",
+    "kafka-to-elastic-service",
     "playground",
     "twitter-to-kafka-service"
 )

@@ -1,12 +1,12 @@
 spring:
   application:
-    name: twitter-to-kafka-service
+    name: kafka-to-elastic-service
   profiles:
-    active: twitter_to_kafka
+    active: kafka_to_elastic
   config:
     import: 'configserver:'
   cloud:
     config:
-      name: config-client-twitter_to_kafka
+      name: kafka-to-elastic-service,config-client
       username: mark
       password: ENC(Ygugwl8r/ffdka57Le0tt82ZPwJRECjB8udyzNODQckyxqQJKeVy43ETKw9PBpYJ)
