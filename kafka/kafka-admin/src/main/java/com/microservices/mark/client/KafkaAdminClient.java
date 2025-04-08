@@ -72,7 +72,7 @@ public class KafkaAdminClient {
         return adminClient.createTopics(kafkaTopics);
     }
 
-    private void checkTopicsCreated() {
+    public void checkTopicsCreated() {
         Collection<TopicListing> topics = getTopics();
         Integer maxRetry = retryConfigData.getMaxAttempts();
         int multiplier = retryConfigData.getMultiplier().intValue();

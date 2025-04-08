@@ -4,6 +4,9 @@ plugins {
 
 dependencies {
 	implementation(project(":app-config-data"))
+	implementation(project(":elastic:elastic-config"))
+	implementation(project(":elastic:elastic-index-client"))
+	implementation(project(":elastic:elastic-model"))
 	implementation(project(":kafka:kafka-admin"))
 	implementation(project(":kafka:kafka-consumer"))
 	implementation(project(":kafka:kafka-model"))
