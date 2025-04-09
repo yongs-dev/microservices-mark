@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
+
 plugins {
 	id("org.springframework.boot") version "3.1.2"
 }
@@ -15,5 +17,10 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
 	implementation("org.springframework.kafka:spring-kafka:3.0.9")
 	implementation("io.confluent:kafka-avro-serializer:7.4.0")
+}
 
+tasks.named<BootBuildImage>("bootBuildImage") {
+	imageName.set("${project.group}/kafka.to.elastic.service:${project.version}")
+	builder.set("paketobuildpacks/builder-jammy-base:latest")
+	environment.set(mapOf("BP_JVM_VERSION" to "21.*"))
 }
