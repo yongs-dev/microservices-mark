@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-@ConditionalOnProperty(name = "elastic-config.is-repository", havingValue = "falses")
+@ConditionalOnProperty(name = "elastic-config.is-repository", havingValue = "false")
 public class TwitterElasticIndexClient implements ElasticIndexClient<TwitterIndexModel> {
 
     private final ElasticConfigData elasticConfigData;

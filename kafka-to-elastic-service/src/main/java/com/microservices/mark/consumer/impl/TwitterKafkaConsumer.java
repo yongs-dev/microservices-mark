@@ -25,7 +25,7 @@ import java.util.Objects;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroModel> {
+public class TwitterKafkaConsumer implements KafkaConsumer<TwitterAvroModel> {
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     private final KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
@@ -45,7 +45,7 @@ public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMode
     @Override
     @KafkaListener(id = "${kafka-consumer-config.consumer-group-id}", topics = "${kafka-config.topic-name}")
     public void receive(@Payload List<TwitterAvroModel> messages,
-                        @Header(KafkaHeaders.RECEIVED_KEY) List<Integer> keys,
+                        @Header(KafkaHeaders.RECEIVED_KEY) List<Long> keys,
                         @Header(KafkaHeaders.RECEIVED_PARTITION) List<Integer> partitions,
                         @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
 
