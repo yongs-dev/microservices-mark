@@ -24,7 +24,7 @@ services:
       - "KAFKA-CONFIG_SCHEMA-REGISTRY-URL=http://schema-registry:8081"
       - "TWITTER-TO-KAFKA-SERVICE_ENABLE-MOCK-TWEETS=true"
       - "SPRING_CLOUD_CONFIG_URI=http://config-server:8888"
-      - "ENCRYPT_KEY=${ENCRYPT_KEY}"
+      - "ENCRYPT_KEY=${JCE_ENCRYPTOR_PASSWORD}"
     networks:
       - ${GLOBAL_NETWORK:-services}
   kafka-to-elastic-service:
@@ -55,7 +55,7 @@ services:
       - "SPRING_CLOUD_CONFIG_URI=http://config-server:8888"
       - "ELASTIC-CONFIG_INDEX-NAME=twitter-index"
       - "ELASTIC-CONFIG_CONNECTION-URL=elastic-1:9200"
-      - "ENCRYPT_KEY=${ENCRYPT_KEY}"
+      - "ENCRYPT_KEY=${JCE_ENCRYPTOR_PASSWORD}"
     networks:
       - ${GLOBAL_NETWORK:-services}
   config-server:
@@ -69,7 +69,7 @@ services:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006 -Xms128m -Xmx256m"
       - "LOG_APP-NAME=config-server"
       - "SERVER_PORT=8888"
-      - "ENCRYPT_KEY=${ENCRYPT_KEY}"
+      - "ENCRYPT_KEY=${JCE_ENCRYPTOR_PASSWORD}"
     networks:
       - ${GLOBAL_NETWORK:-services}
   elastic-query-service:
@@ -81,6 +81,7 @@ services:
       - "./docker-logs:/workspace/elastic-query-service/logs"
       - "./check-config-server-started.sh:/usr/local/bin/check-config-server-started.sh"
     user: root
+    entrypoint: ["check-config-server-started.sh"]
     depends_on:
       - config-server
       - elastic-1
@@ -95,6 +96,6 @@ services:
       - "SERVER_PORT=8183"
       - "SERVER_SERVLET_CONTEXT-PATH=/elastic-query-service"
       - "SPRING_CLOUD_CONFIG_URI=http://config-server:8888"
-      - "ENCRYPT_KEY=${ENCRYPT_KEY}"
+      - "ENCRYPT_KEY=${JCE_ENCRYPTOR_PASSWORD}"
     networks:
       - ${GLOBAL_NETWORK:-services}
