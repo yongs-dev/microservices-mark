@@ -18,6 +18,6 @@ public class ElasticIndexUtil<T extends IndexModel> {
                         .withId(document.getId())
                         .withObject(document)
                         .build()
-                ).collect(Collectors.toList());
+                ).toList();
     }
 }

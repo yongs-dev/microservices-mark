@@ -22,6 +22,6 @@ public class AvroToElasticModelTransformer {
                         .text(avroModel.getText())
                         .createdAt(ZonedDateTime.ofInstant(Instant.ofEpochMilli(avroModel.getCreatedAt()), ZoneId.systemDefault()))
                         .build()
-                ).collect(Collectors.toList());
+                ).toList();
     }
 }

@@ -1,5 +1,6 @@
 package com.microservices.mark.model;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @Getter
@@ -9,5 +10,7 @@ import lombok.*;
 public class ElasticQueryServiceRequestModel {
 
     private String id;
+
+    @NotEmpty
     private String text;
 }
