@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
+
 plugins {
     id("org.springframework.boot") version "3.1.2"
 }
@@ -13,4 +15,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-hateoas")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.cloud:spring-cloud-starter-config")
+    implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
+}
+
+tasks.named<BootBuildImage>("bootBuildImage") {
+    imageName.set("${project.group}/elastic.query.service:${project.version}")
+    builder.set("paketobuildpacks/builder-jammy-base:latest")
+    environment.set(mapOf("BP_JVM_VERSION" to "21.*"))
 }
