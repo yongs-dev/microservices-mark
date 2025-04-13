@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/documnets")
+@RequestMapping("/documents")
 public class ElasticDocumentController {
 
     @GetMapping
