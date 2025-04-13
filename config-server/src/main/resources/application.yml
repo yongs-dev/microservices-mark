@@ -11,13 +11,13 @@ spring:
           uri: https://github.com/yongs-dev/microservices-mark-config-repository.git
           default-label: main
           username: yongs-dev
-          password: ENC(3W86ukkcepsQpneWZInq2cHm4WA37/TCLJzwzkQXXscj8JIs2kFMt/nuIIbXkCFve+fj5piLzyo3o6bZWevoc+/a9ZD2ntDyMW19T29C9BM=)
+          password: '{cipher}a7ba3935b056cc39b08dcf95ffdcf851eb01925bbdadcec2a00398c4261af25e09673dabf9846d268b6da6ebb67eb7f26f592b13c6bf2c2f232eb73960eda8fc'
           clone-on-start: true
     fail-fast: true
   security:
     user:
       name: mark
-      password: ENC(Ygugwl8r/ffdka57Le0tt82ZPwJRECjB8udyzNODQckyxqQJKeVy43ETKw9PBpYJ)
+      password: '{cipher}f2667da0dc65cefd56a7285070a1ca2dba3636a8034161058de9f673c5ab65d4'
 
 logging:
   level:
