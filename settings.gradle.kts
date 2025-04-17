@@ -10,6 +10,7 @@ include(
     "elastic:elastic-model",
     "elastic:elastic-query-client",
     "elastic-query-service",
+    "elastic-query-web-client",
     "kafka:kafka-model",
     "kafka:kafka-admin",
     "kafka:kafka-producer",
