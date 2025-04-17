@@ -6,6 +6,7 @@ plugins {
 
 dependencies {
     implementation(project(":app-config-data"))
+    implementation(project(":elastic-query-web-client-common"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")

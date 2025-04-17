@@ -2,7 +2,6 @@ package com.microservices.mark.business.impl;
 
 import com.microservices.mark.business.ElasticQueryService;
 import com.microservices.mark.index.impl.TwitterIndexModel;
-import com.microservices.mark.model.ElasticQueryServiceResponseModel;
 import com.microservices.mark.model.assembler.ElasticQueryServiceResponseModelAssembler;
 import com.microservices.mark.service.ElasticQueryClient;
 import lombok.RequiredArgsConstructor;

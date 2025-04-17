@@ -1,8 +1,6 @@
 package com.microservices.mark.api;
 
 import com.microservices.mark.business.ElasticQueryService;
-import com.microservices.mark.model.ElasticQueryServiceRequestModel;
-import com.microservices.mark.model.ElasticQueryServiceResponseModel;
 import com.microservices.mark.model.ElasticQueryServiceResponseModelV2;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

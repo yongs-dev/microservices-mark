@@ -10,6 +10,7 @@ dependencies {
     implementation(project(":elastic:elastic-config"))
     implementation(project(":elastic:elastic-model"))
     implementation(project(":elastic:elastic-query-client"))
+    implementation(project(":elastic-query-service-common"))
 
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-hateoas")
