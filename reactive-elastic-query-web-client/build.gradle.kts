@@ -6,20 +6,16 @@ plugins {
 
 dependencies {
     implementation(project(":app-config-data"))
-    implementation(project(":common-util"))
-    implementation(project(":elastic:elastic-config"))
-    implementation(project(":elastic:elastic-model"))
-    implementation(project(":elastic:elastic-query-client"))
-    implementation(project(":elastic-query-service-common"))
+    implementation(project(":elastic-query-web-client-common"))
 
-    implementation("org.springframework.boot:spring-boot-starter-hateoas")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.cloud:spring-cloud-starter-config")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 }
 
 tasks.named<BootBuildImage>("bootBuildImage") {
-    imageName.set("${project.group}/elastic.query.service:${project.version}")
+    imageName.set("${project.group}/reactive.elastic.query.web.client:${project.version}")
     builder.set("paketobuildpacks/builder-jammy-base:latest")
     environment.set(mapOf("BP_JVM_VERSION" to "21.*"))
 }

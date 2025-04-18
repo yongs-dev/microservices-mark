@@ -19,5 +19,7 @@ include(
     "kafka:kafka-consumer",
     "kafka-to-elastic-service",
     "playground",
+    "reactive-elastic-query-service",
+    "reactive-elastic-query-web-client",
     "twitter-to-kafka-service"
 )
