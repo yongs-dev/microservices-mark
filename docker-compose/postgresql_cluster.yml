@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  postgres-1:
+    image: postgres:${POSTGRESQL_VERSION:-latest}
+    container_name: postgres-1
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata_primary:/var/lib/postgresql/data
+    networks:
+      - ${GLOBAL_NETWORK:-application}
+
+volumes:
+  pgdata_primary:
+    driver: local
+
+networks:
+  ${GLOBAL_NETWORK:-application}:
+    external: true
