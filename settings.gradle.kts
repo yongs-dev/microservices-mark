@@ -12,6 +12,7 @@ include(
     "elastic-query-service",
     "elastic-query-service-common",
     "elastic-query-web-client",
+    "elastic-query-web-client-2",
     "elastic-query-web-client-common",
     "kafka:kafka-model",
     "kafka:kafka-admin",

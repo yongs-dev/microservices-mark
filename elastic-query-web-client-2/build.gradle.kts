@@ -19,7 +19,7 @@ dependencies {
 }
 
 tasks.named<BootBuildImage>("bootBuildImage") {
-    imageName.set("${project.group}/elastic.query.web.client:${project.version}")
+    imageName.set("${project.group}/elastic.query.web.client.2:${project.version}")
     builder.set("paketobuildpacks/builder-jammy-base:latest")
     environment.set(mapOf("BP_JVM_VERSION" to "21.*"))
 }

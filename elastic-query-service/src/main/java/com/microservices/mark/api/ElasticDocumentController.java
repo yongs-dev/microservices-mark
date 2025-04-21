@@ -15,12 +15,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Slf4j
-@RestController
+@PreAuthorize("isAuthenticated()")
+ @RestController
 @RequestMapping(value = "/documents", produces = "application/vnd.api.v1+json")
 @RequiredArgsConstructor
 public class ElasticDocumentController {
@@ -30,6 +33,7 @@ public class ElasticDocumentController {
     @Value("${server.port}")
     private String port;
 
+    @PostAuthorize("hasPermission(returnObject, 'READ')")
     @Operation(summary = "Get all elastic documents.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful response.", content = {
@@ -48,6 +52,7 @@ public class ElasticDocumentController {
         return ResponseEntity.ok(response);
     }
 
+    @PreAuthorize("hasPermission(#id, 'ElasticQueryServiceResponseModel', 'READ')")
     @Operation(summary = "Get elastic document by id.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful response.", content = {
@@ -82,6 +87,8 @@ public class ElasticDocumentController {
         return ResponseEntity.ok(getV2Model(response));
     }
 
+    @PreAuthorize("hasRole('APP_USER_ROLE') || hasRole('APP_SUPER_USER_ROLE') || hasAuthority('SCOPE_APP_USER_ROLE')")
+    @PostAuthorize("hasPermission(returnObject, 'READ')")
     @Operation(summary = "Get elastic document by text.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful response.", content = {
