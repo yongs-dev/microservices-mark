@@ -24,6 +24,7 @@ services:
     volumes:
       - "./docker-logs:/workspace/twitter-to-kafka-service/logs"
       - "./check-config-server-started.sh:/usr/local/bin/check-config-server-started.sh"
+      - "./check-keycloak-server-started.sh:/usr/local/bin/check-keycloak-server-started.sh"
     user: root
     entrypoint: ["check-config-server-started.sh"]
     depends_on:
